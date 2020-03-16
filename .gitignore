@@ -104,6 +104,18 @@ dist
 .tern-port
 
 
+www/public/build/
+www/public/fonts/*
+
+.tags
+.gitea
+
+www/public/mix-manifest.json
+
+www/.local.env
+www/.production.env
+www/.staging.env
+
 /public/hot
 /public/storage
 /storage/*.key
@@ -114,3 +126,16 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+
+
+## ----------------
+## OS System Files
+## ----------------
+._*
+.VolumeIcon.icns
+.fseventsd
+ehthumbs.db
+Icon?
+Thumbs.db
+.DS_Store
+.com.apple.timemachine.supported
