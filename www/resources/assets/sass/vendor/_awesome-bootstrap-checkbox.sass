@@ -1,0 +1,115 @@
+// ---------------------------------------------
+// [Variables] ::start
+// ---------------------------------------------
+
+$abc_label_color: $body-color
+$abc_border_width: 1px
+$abc_border_color: $input-border-color
+$abc_hover_border_color: $primary
+
+// ---------------------------------------------
+// [Variables] ::end
+// ---------------------------------------------
+
+
+.abc-radio,
+.abc-checkbox
+  margin-left: 0
+  padding-left: 20px
+  min-height: 20px
+  font-family: $font-family-base
+
+  &.form-check-inline
+    margin-right: 25px
+
+  label
+    padding-left: 10px
+    color: $abc_label_color
+    cursor: pointer
+    font-size: 1.1em
+    +transition(all 0.4s)
+
+    &:hover,
+    &:focus
+      color: $abc_hover_border_color
+
+    &:before,
+    &:after
+      top: 2px
+      +transition(inherit)
+
+    &:before
+      height: 20px
+      width: 20px
+      background: none
+      border-width: $abc_border_width
+      border-color: $abc_border_color
+
+    &:after
+      top: 1px
+      left: -17px
+      padding: 0
+      margin: 0
+      color: $abc_hover_border_color
+
+  > input
+    &[type="checkbox"],
+    &[type="radio"]
+      position: absolute
+      top: 2px
+      left: 0
+      margin: 0
+      height: 20px
+      width: 20px
+      cursor: pointer
+
+    &:hover
+      & + label
+        color: $abc_hover_border_color
+
+        &:before
+          border-color: $abc_hover_border_color
+
+    &[disabled]
+      cursor: not-allowed
+
+      & + label
+        cursor: not-allowed
+
+        &:before
+          border-color: $abc_border_color
+
+
+// ---------------------------------------------
+// [Checkbox] ::start
+// ---------------------------------------------
+
+.abc-checkbox
+  label
+    &:before
+      +border-radius(0)
+
+    &:after
+      font-size: 0.8em
+
+// ---------------------------------------------
+// [Checkbox] ::end
+// ---------------------------------------------
+
+
+// ---------------------------------------------
+// [Radio] ::start
+// ---------------------------------------------
+
+.abc-radio
+  label
+    &:after
+      top: 7px
+      left: -15px
+      height: 10px
+      width: 10px
+      background-color: $primary
+
+// ---------------------------------------------
+// [Radio] ::end
+// ---------------------------------------------

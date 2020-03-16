@@ -1,0 +1,357 @@
+// ==================================================
+// [_bootstrap-select.sass]
+// ==================================================
+
+// ++++++++++++++++++++++++++++++++++++++++
+// [Theme Overrides] ::start
+// ++++++++++++++++++++++++++++++++++++++++
+$select_dropdown_background: $white
+$select_dropdown_border: 1px solid $gray-200
+
+$select_dropdown_group_title_color: $primary
+$select_dropdown_group_title_font_family: $font-family-base
+
+$select_dropdown_items_active_background_color: $primary
+
+$select_search_text_color: $black
+$select_search_border_color: $gray-200
+$select_search_results_background_color: $input-bg
+$select_search_results_text_color: $gray-800
+
+%select_toggle_primary_state
+  background-color: $white
+  background-image: none
+  color: $body-color
+  border: 1px solid $input-border-color
+
+  .filter-option:after
+    background-color: transparent
+
+%select_toggle_secondary_state
+  background-color: $white
+  color: $body-color
+  +box-shadow(none)
+
+  &:after
+    border-top-color: $primary
+
+  .filter-option:after
+    background-color: transparent
+
+%select_dropdown_item_primary_state
+  background: none
+  color: $gray-700
+  border-bottom: 1px dotted lighten($black, 86.5%)
+  font-size: 1em
+  text-indent: 2px
+
+  .fa
+    color: $primary
+
+%select_dropdown_item_secondary_state
+  background-color: $primary
+  color: $white
+  border-color: lighten($primary, 10%)
+
+  .fa
+    color: $white
+
+// ++++++++++++++++++++++++++++++++++++++++
+// [Theme Overrides] ::end
+// ++++++++++++++++++++++++++++++++++++++++
+
+
+.bootstrap-select
+  background: none
+
+  &.form-control
+    padding: 0
+
+    .has-error &
+      height: 54px
+    
+    &:hover
+      background-color: transparent
+
+  &.select--with-search
+    > .dropdown-menu
+      padding-top: 50px
+
+  &.dropdown
+    .dropdown-toggle
+      @extend %select_toggle_primary_state
+      padding: 12px 35px 12px 15px
+      font-family: $font-family-secondary
+      font-size: 1em
+      text-transform: none
+      text-shadow: none
+      overflow: hidden
+      white-space: nowrap
+      outline: none !important
+      +border-radius(0)
+      +transition(all 0.5s)
+      +box-shadow(none !important)
+
+      &:hover,
+      &:focus
+        @extend %select_toggle_secondary_state
+
+      &:after
+        position: absolute
+        top: 20px
+        right: 14px
+        margin: 0
+        border-right-width: 6px
+        border-top-width: 7px
+        border-left-width: 6px
+        border-top-color: $primary
+
+        .has-error &
+          border-top-color: $red
+
+      .filter-option
+        &:after
+          position: absolute
+          top: 0
+          right: 0
+          bottom: 0
+          content: ' '
+          display: inline-block
+          height: 100%
+          width: 30px
+          z-index: -1
+          +transition(all 0.5s)
+
+        > i
+          margin-right: 8px
+
+      .filter-option-inner
+        padding-right: 0
+
+      .filter-option-inner-inner
+        overflow: hidden
+        white-space: nowrap
+        text-overflow: ellipsis
+
+    &.show,
+    &.dropup
+      .dropdown-toggle
+        @extend %select_toggle_secondary_state
+
+        &:after
+          top: 19px
+          border-top: 0
+          border-bottom: 7px solid $primary
+
+          .has-error &
+            border-bottom-color: $red
+
+    &.show-tick
+      .dropdown-menu
+        .dropdown-item.selected
+          background-color: $select_dropdown_items_active_background_color
+
+          .dropdown-item-inner
+            .check-mark
+              margin: 0
+              padding: 0
+
+          span.check-mark
+            top: 10px
+
+  .dropdown-menu
+    margin-top: 6px
+    padding: 0
+    background-color: $select_dropdown_background
+    border: $select_dropdown_border
+    font-family: $font-family-secondary
+    overflow: hidden
+    +border-radius(0)
+    +box-shadow(0 2px 10px rgba($black, 0.15))
+
+    &[x-placement="top-start"]
+      margin-top: 0
+      margin-bottom: 6px
+
+    li
+      &:last-child
+        .dropdown-item
+          border-bottom: none
+
+      &.disabled
+        cursor: not-allowed
+
+    .dropdown-item
+      @extend %select_dropdown_item_primary_state
+      padding: 8px 10px
+      white-space: normal
+
+      &:hover,
+      &:focus
+        @extend %select_dropdown_item_secondary_state
+        outline: none !important
+
+      &.selected,
+      &.active
+        @extend %select_dropdown_item_secondary_state
+        color: $white
+
+      &.selected
+        background-color: $select_dropdown_items_active_background_color
+
+      &.disabled
+        color: $gray-300
+
+      .fa
+        padding-right: 8px
+
+      .dropdown-item-inner.opt
+        padding-left: 20px !important
+
+    .no-results
+      margin: 0
+      padding: 5px 10px
+      background-color: $select_search_results_background_color
+      color: $select_search_results_text_color
+      font-size: 0.8em
+      font-style: italic
+      letter-spacing: 0.03em
+
+    .dropdown-header
+      padding: 10px 10px 5px
+      color: $select_dropdown_group_title_color
+      font-family: $select_dropdown_group_title_font_family
+      font-size: 1em
+      font-weight: 700px
+      text-transform: uppercase
+      letter-spacing: 0.1em
+
+      &:not(:first-child)
+        padding-top: 30px
+
+      & ~ .dropdown-divider
+        display: none
+
+    // [.bs-searchbox] ::start
+    .bs-searchbox
+      position: absolute
+      top: 0
+      right: 0
+      left: 0
+      padding: 8px
+
+      .form-control
+        padding: 8px
+        color: $select_search_text_color
+        border: 1px solid $select_search_border_color
+        font-family: $font-family-base
+        font-size: 0.9em
+        line-height: 1
+        +border-radius(0)
+
+        &:hover,
+        &:focus
+          +box-shadow(inset 0 0 8px rgba($black, 0.08))
+    // [.bs-searchbox] ::end
+
+    // [.bs-actionsbox] ::start
+    .bs-actionsbox
+      padding: 8px
+      min-width: 220px
+
+      .btn-group
+        .btn
+          padding-right: 0
+          padding-left: 0
+          background: none
+          color: $primary
+          border-color: $gray-300
+          font-size: 0.75em
+          text-transform: uppercase
+          +transition(all 0.4s)
+          +box-shadow(0 0 8px rgba($black, 0.06) inset)
+
+          &:hover,
+          &:focus
+            background-color: $primary
+            color: $white
+            border-color: $primary
+    // [.bs-actionsbox] ::end
+
+
+// [Error] ::start
+.has-error
+  .bootstrap-select
+    .dropdown-toggle
+      background-color: $white
+      color: $red
+      border: none
+// [Error] ::end
+
+
+// // ---------------------------------------------
+// // [Style 1] ::start
+// // ---------------------------------------------
+//
+// // [Style Overrides] ::start
+// %select_style_1_toggle_secondary_state
+//   color: $primary
+//
+//   .filter-option:after
+//     color: $primary
+//
+// %select_style_1_dropdown_item_secondary_state
+//   background-color: $primary
+//   border-color: lighten($primary, 10%)
+// // [Style Overrides] ::end
+//
+// .select--s-1
+//   &.dropdown
+//     .dropdown-toggle
+//       padding: 18px 35px 17px 20px
+//       background: none
+//       color: $white
+//       border: 2px solid $white
+//       line-height: 1
+//
+//       &:after
+//         top: 0 !important
+//         right: 6px
+//         bottom: 0
+//         display: flex
+//         align-items: center
+//         border: none !important
+//         content: '\F140'
+//         font-family: 'Material Design Icons'
+//         font-size: 1.8em
+//
+//       &:hover,
+//       &:focus
+//         @extend %select_style_1_toggle_secondary_state
+//
+//       .filter-option:after
+//         background: inherit !important
+//
+//     &.show,
+//     &.dropup
+//       .dropdown-toggle
+//         @extend %select_style_1_toggle_secondary_state
+//
+//         &:after
+//           +transform(rotate(180deg))
+//
+//   .dropdown-menu
+//     .dropdown-item
+//       // @extend %select_style_1_dropdown_item_primary_state
+//
+//       &:hover,
+//       &:focus
+//         @extend %select_style_1_dropdown_item_secondary_state
+//
+//       &.selected,
+//       &.active
+//         @extend %select_style_1_dropdown_item_secondary_state
+//
+// // ---------------------------------------------
+// // [Style 1] ::end
+// // ---------------------------------------------

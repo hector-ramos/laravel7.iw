@@ -1,0 +1,95 @@
+// ==================================================
+// [_links.sass]
+// ==================================================
+
+.link
+  position: relative
+  color: $link-color
+  line-height: normal
+  letter-spacing: normal
+  outline: none !important
+  +transition(all 0.4s)
+
+  &:visited
+    @extend .link
+
+  &:hover,
+  &:focus
+    color: $link-hover-color
+
+
+// ---------------------------------------------
+// [Links Style 1] ::start
+// ---------------------------------------------
+
+.link--s-1
+  color: $primary
+
+  &:visited
+    @extend .link--s-1
+
+  &:hover,
+  &:focus
+    color: $secondary
+
+// ---------------------------------------------
+// [Links Style 1] ::end
+// ---------------------------------------------
+
+
+// ---------------------------------------------
+// [Link with Icon] ::start
+// ---------------------------------------------
+
+.link--with-icon
+  position: relative
+  display: inline-flex
+  align-items: center
+  text-decoration: none !important
+
+  .link__icon
+    position: relative
+    color: $primary
+
+  .link__text
+    display: inline-block
+    margin-left: 5px
+
+  .link__icon-animate
+    right: 0
+    left: 0
+    +transition(all 0.4s)
+
+  &:hover
+    .link__icon-animate
+      right: auto
+
+      &.animate-left
+        left: -5px
+
+      &.animate-right
+        left: 5px
+
+  &.link--icon-right
+    .link__text
+      margin-right: 5px
+      margin-left: 0
+
+    .link__icon
+      top: 0
+      right: 0
+      left: auto
+
+    &:hover
+      .link__icon-animate
+        left: auto
+
+        &.animate-left
+          right: 5px
+
+        &.animate-right
+          right: -5px
+
+// ---------------------------------------------
+// [Link with Icon] ::end
+// ---------------------------------------------

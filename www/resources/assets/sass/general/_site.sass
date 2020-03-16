@@ -1,0 +1,121 @@
+// ==================================================
+// [_site.sass]
+// ==================================================
+
+html,
+body
+  height: 100%
+
+body
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+
+.logo
+  position: relative
+  line-height: normal
+
+  .logo__link
+    display: inline-block
+    +transition(all 0.4s)
+
+    &:hover
+      opacity: 0.6
+
+    > svg
+      max-width: 300px
+
+// [Default Text and Text Group Styling] ::start
+%text_styling
+  line-height: normal
+
+.text-group
+  p
+    @extend %text_styling
+
+    &:last-child
+      margin-bottom: auto
+
+p.text
+  @extend %text_styling
+
+  &:last-child
+    margin-bottom: auto
+// [Default Text and Text Group Styling] ::end
+
+
+// ---------------------------------------------
+// [Contents] ::start
+// ---------------------------------------------
+
+// [.main-container] ::start
+.main-container
+  height: 100%
+
+  display: -webkit-box
+  display: -moz-box
+  display: -ms-flexbox
+  display: -webkit-flex
+  display: flex
+
+  -webkit-flex-direction: column
+  -moz-flex-direction: column
+  -ms-flex-direction: column
+  flex-direction: column
+// [.main-container] ::end
+
+
+// [.main-content] ::start
+.main-content
+  position: relative
+  overflow-y: auto
+  overflow-x: hidden
+
+  display: -webkit-box
+  display: -moz-box
+  display: -ms-flexbox
+  display: -webkit-flex
+  display: flex
+
+  -webkit-flex-direction: column
+  -moz-flex-direction: column
+  -ms-flex-direction: column
+  flex-direction: column
+
+  -webkit-box-flex: 1 0 auto
+  -moz-box-flex: 1 0 auto
+  -webkit-flex: 1 0 auto
+  -ms-flex: 1 0 auto
+  flex: 1 0 auto
+// [.main-content] ::end
+
+
+// [.contents] ::start
+.contents
+  -webkit-box-flex: 1 0 auto
+  -moz-box-flex: 1 0 auto
+  -webkit-flex: 1 0 auto
+  -ms-flex: 1 0 auto
+  flex: 1 0 auto
+  flex-grow: 1
+// [.contents] ::end
+
+// ---------------------------------------------
+// [Contents] ::end
+// ---------------------------------------------
+
+
+// ---------------------------------------------
+// [Images] ::start
+// ---------------------------------------------
+
+.lazyload
+  min-height: 150px
+
+  &.img-responsive[alt]
+    line-height: 150px
+    text-align: center
+    font-size: smaller
+
+// ---------------------------------------------
+// [Images] ::end
+// ---------------------------------------------

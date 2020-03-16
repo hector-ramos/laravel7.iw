@@ -1,0 +1,195 @@
+// ==================================================
+// [_navigation.sass]
+// ==================================================
+
+.main-navigation
+  position: relative
+  margin-bottom: 20px
+  z-index: 1000
+
+
+// ---------------------------------------------
+// [Navbar - Main] ::start
+// ---------------------------------------------
+
+.navbar--main
+  width: 100%
+  background: $primary
+
+  .navbar-brand
+    color: $white
+    font-family: $font-family-secondary
+    text-shadow: none
+    letter-spacing: 0.05em
+
+  .navbar-toggler
+    position: relative
+    padding: 0
+    border: none
+    z-index: 200
+    +border-radius(0)
+
+  .navbar-collapse
+    position: absolute
+    top: 100%
+    right: 0
+    left: 0
+    width: 100%
+    background: inherit
+    text-align: left
+
+  .navbar-nav
+    .nav-item
+      position: relative
+      border-top: 1px solid lighten($primary, 10%)
+
+      // [.show] ::start
+      &.show
+        .nav-link
+          &.dropdown-toggle
+            span
+              top: 2px
+              transform: rotate(-180deg)
+      // [.show] ::end
+
+      .nav-link
+        position: relative
+        display: block
+        padding: 15px 20px
+        line-height: 1
+        text-shadow: none
+        text-decoration: none !important
+        letter-spacing: 0.06em
+        white-space: normal
+        outline: none
+        +transition(color 0.4s)
+        +box-shadow(none !important)
+
+        &.dropdown-toggle
+          padding-right: 40px
+
+          &:after
+            display: none
+
+          span
+            position: absolute
+            top: 0
+            right: 20px
+            bottom: 0
+            margin: auto
+            height: 15px
+            width: 15px
+            color: inherit
+            +transition(all 0.3s)
+
+
+      // [Dropdown Menu] ::start
+      .dropdown-menu
+        margin: 20px
+        padding: 0
+        background: $white
+        overflow: hidden
+
+        .dropdown-item
+          margin: 0
+          padding: 0
+
+          &:hover
+            background: transparent
+
+          &:last-child
+            .nav-link
+              border-bottom: none
+
+          &.active
+            background: none
+
+            .nav-link
+              color: $primary
+              text-transform: uppercase
+
+              &:hover
+                background: none
+                color: $primary
+
+              span
+                transform: rotate(-180deg)
+
+          .nav-link
+            padding: 12px 18px
+            color: $body-color
+            border-bottom: 1px solid $gray-200
+            font-size: 1em
+
+            &:hover
+              background: $gray-200
+              color: $black
+      // [Dropdown Menu] ::end
+
+// ---------------------------------------------
+// [Navbar - Main] ::end
+// ---------------------------------------------
+
+
+
+
+
+// ------------------------------------------------
+// [Large devices (desktops, 992px and up)] ::start
+// ------------------------------------------------
+
++media-breakpoint-up(lg)
+
+  // [Navbar - Main] ::start
+  .navbar--main
+    padding: 0
+    border: 1px solid lighten($primary, 10%)
+
+    .navbar-collapse
+      position: static
+
+    .navbar-nav
+      .nav-item
+        border-top: none
+
+        .nav-link
+          padding: 15px 20px
+          letter-spacing: normal
+          white-space: nowrap
+  
+        // [.dropdown-menu] ::start
+        .dropdown-menu
+          top: 100%
+          left: 50%
+          margin: 1px auto auto
+          padding: 0 20px
+          background: $primary
+          border: none
+          transform: translate(-50%)
+          +border-radius(0)
+
+          .dropdown-item
+            &.active
+              .nav-link
+                color: $white
+                border-bottom: 2px solid $white
+                letter-spacing: 0.05em
+
+                &:hover
+                  color: $white
+
+            .nav-link
+              padding: 15px 0
+              color: $white
+              border-bottom-color: lighten($primary, 10%)
+
+              &:hover
+                background: none
+                color: rgba($white, 0.5)
+        // [.dropdown-menu] ::end
+
+  // [Navbar - Main] ::end
+
+// ------------------------------------------------
+// [Large devices (desktops, 992px and up)] ::end
+// ------------------------------------------------

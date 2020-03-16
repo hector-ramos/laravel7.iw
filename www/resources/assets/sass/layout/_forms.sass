@@ -1,0 +1,38 @@
+// ==================================================
+// [_forms.sass]
+// ==================================================
+
+.control-label
+  position: relative
+  display: block
+
+.form-control
+  position: relative
+  outline: none
+
+  &:hover,
+  &:focus
+    color: $input-focus-color
+
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] &
+    cursor: not-allowed
+    +opacity(0.4)
+
+
+
+// ---------------------------------------------
+// [Smart Form] ::start
+// ---------------------------------------------
+
+.smart-form
+
+  // [Form Groups] ::start
+  .form-group
+    position: relative
+  // [Form Groups] ::end
+
+// ---------------------------------------------
+// [Smart Form] ::end
+// ---------------------------------------------

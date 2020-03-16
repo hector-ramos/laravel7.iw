@@ -1,0 +1,61 @@
+// ==================================================
+// [_preloader.sass]
+// ==================================================
+
+.with-page-preloader
+  position: relative
+  overflow: hidden
+
+  [data-page-preloader-element="s-1"],
+  [data-page-preloader-element="s-2"]
+    opacity: 0
+    visibility: hidden
+
+  &:before,
+  &:after
+    position: fixed
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    content: ' '
+    display: block
+    height: 100%
+    width: 100%
+    opacity: 1
+    overflow: hidden
+    cursor: not-allowed
+    z-index: 9999
+    visibility: visible
+
+  &:before
+    background: rgba($black, 0.9)
+
+  &:after
+    background: url('/img/ui/loader-light.gif') no-repeat center center
+
+  &.page-preloaded
+    overflow: visible
+
+    [data-page-preloader-element="s-1"],
+    [data-page-preloader-element="s-2"]
+      opacity: 1
+      visibility: visible
+    
+    [data-page-preloader-element="s-1"]
+      +transition(opacity 0.6s ease-in-out, visibility 1s ease-in-out)
+    
+    [data-page-preloader-element="s-2"]
+      +transition(opacity 2s ease-in-out, visibility 1s ease-in-out)
+
+    &:before
+      +transition(opacity 0.6s ease-in-out, visibility 0.6s ease-in-out)
+
+    &:after
+      +transition(opacity 0.3s ease-in-out, visibility 0.3s ease-in-out)
+
+    &:before,
+    &:after
+      opacity: 0
+      visibility: hidden
+      cursor: auto

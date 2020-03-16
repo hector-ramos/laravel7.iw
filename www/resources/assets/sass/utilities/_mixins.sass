@@ -1,0 +1,156 @@
+// ==================================================
+// [_mixins.sass]
+// ==================================================
+
+// [Fonts] ::start
+=font-family-base
+  font-family: $font-family-base
+
+=font-family-secondary
+  font-family: $font-family-secondary
+
+=font-family-alternate
+  font-family: $font-family-alternate
+// [Fonts] ::end
+
+
+// [Input Placeholder] ::start
+=placeholder($placeholder-font-family: $font-family-secondary, $placeholder-color: $input-color-placeholder, $placeholder-hover-color: $input-color-placeholder)
+
+  // [Firefox] ::start
+  &:-moz-placeholder,
+  &::-moz-placeholder
+    color: $placeholder-color
+    font-family: $placeholder-font-family
+    +transition(all 0.6s)
+
+  &:hover:-moz-placeholder,
+  &:hover::-moz-placeholder,
+  &:focus:-moz-placeholder,
+  &:focus::-moz-placeholder
+    color: $placeholder-color
+    color: $placeholder-hover-color
+    opacity: 0.5
+  // [Firefox] ::start
+
+  // [Safari and Chrome] ::start
+  &::-webkit-input-placeholder
+    color: $placeholder-color
+    font-family: $placeholder-font-family
+    +transition(all 0.6s)
+
+  &:hover::-webkit-input-placeholder,
+  &:focus::-webkit-input-placeholder
+    color: $placeholder-color
+    color: $placeholder-hover-color
+    opacity: 0.5
+  // [Safari and Chrome] ::start
+
+  // [Internet Explorer 10+] ::start
+  &:-ms-input-placeholder
+    color: $placeholder-color
+    font-family: $placeholder-font-family
+    +transition(all 0.6s)
+
+  &:hover:-ms-input-placeholder,
+  &:focus:-ms-input-placeholder
+    color: $placeholder-color
+    color: $placeholder-hover-color
+    opacity: 0.5
+  // [Internet Explorer 10+] ::start
+
+// [Input Placeholder] ::end
+
+
+// [Transparent Background] ::start
+=transparent-bg($color, $a)
+  $rgba: rgba($color, $a)
+  $ie-hex-str: ie-hex-str($rgba)
+  $opacity-ie: $a * 100
+  background-color: transparent
+  background-color: $rgba
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex-str},endColorstr=#{$ie-hex-str})
+  filter: alpha(opacity = $opacity-ie)
+  zoom: 1
+// [Transparent Background] ::end
+
+
+// [Border Radius] ::start
+=border-radius($radius)
+  -webkit-border-radius: $radius
+  -moz-border-radius: $radius
+  border-radius: $radius
+
+=border-top-radius($radius)
+  -webkit-border-top-left-radius: $radius
+  -webkit-border-top-right-radius: $radius
+  -moz-border-radius-topleft: $radius
+  -moz-border-radius-topright: $radius
+  border-top-left-radius: $radius
+  border-top-right-radius: $radius
+
+=border-bottom-radius($radius)
+  -webkit-border-bottom-right-radius: $radius
+  -webkit-border-bottom-left-radius: $radius
+  -moz-border-radius-bottomright: $radius
+  -moz-border-radius-bottomleft: $radius
+  border-bottom-right-radius: $radius
+  border-bottom-left-radius: $radius
+
+=border-left-radius($radius)
+  -webkit-border-top-left-radius: $radius
+  -webkit-border-bottom-left-radius: $radius
+  -moz-border-radius-topleft: $radius
+  -moz-border-radius-bottomleft: $radius
+  border-top-left-radius: $radius
+  border-bottom-left-radius: $radius
+
+=border-right-radius($radius)
+  -webkit-border-top-right-radius: $radius
+  -webkit-border-bottom-right-radius: $radius
+  -moz-border-radius-topright: $radius
+  -moz-border-radius-bottomright: $radius
+  border-top-right-radius: $radius
+  border-bottom-right-radius: $radius
+
+=border-top-left-radius($radius)
+  -webkit-border-top-left-radius: $radius
+  -moz-border-radius-topleft: $radius
+  border-top-left-radius: $radius
+
+=border-top-right-radius($radius)
+  -webkit-border-top-right-radius: $radius
+  -moz-border-radius-topright: $radius
+  border-top-right-radius: $radius
+
+=border-bottom-left-radius($radius)
+  -webkit-border-bottom-left-radius: $radius
+  -moz-border-radius-bottomleft: $radius
+  border-bottom-left-radius: $radius
+
+=border-bottom-right-radius($radius)
+  -webkit-border-bottom-right-radius: $radius
+  -moz-border-radius-bottomright: $radius
+  border-bottom-right-radius: $radius
+// [Border Radius] ::end
+
+
+// [Opacity] ::start
+=opacity($opacity)
+  opacity: $opacity
+  $opacity-ie: $opacity * 100
+  filter: alpha(opacity = $opacity-ie)//IE8
+// [Opacity] ::end
+
+
+// [Linear Gradient] ::start
+=bg-linear($topColor, $bottomColor, $topPosition: 0%, $bottomPosition: 100%)
+  background: $topColor // Old browsers
+  background: -moz-linear-gradient(top,  $topColor $topPosition, $bottomColor $bottomPosition) // FF3.6+
+  background: -webkit-gradient(linear, left top, left bottom, color-stop($topPosition,$topColor), color-stop($bottomPosition,$bottomColor)) // Chrome,Safari4+
+  background: -webkit-linear-gradient(top,  $topColor $topPosition,$bottomColor $bottomPosition) // Chrome10+,Safari5.1+
+  background: -o-linear-gradient(top,  $topColor $topPosition,$bottomColor $bottomPosition) // Opera 11.10+
+  background: -ms-linear-gradient(top,  $topColor $topPosition,$bottomColor $bottomPosition) // IE10+
+  background: linear-gradient(to bottom,  $topColor $topPosition,$bottomColor $bottomPosition) // W3C
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$topColor', endColorstr='$bottomColor',GradientType=0 ) // IE6-9
+// [Linear Gradient] ::end

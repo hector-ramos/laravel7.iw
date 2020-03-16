@@ -1,0 +1,120 @@
+// ==================================================
+// [_functions.sass]
+// ==================================================
+
+// [String Functions] ::start
+// <https://github.com/HugoGiraudel/SassyStrings/blob/master/stylesheets/private/_str-last-index.scss>
+@function _ss-str-last-index($string, $needle)
+  $index: str-index($string, $needle)
+  $result: $index
+
+  @if $index
+    @for $i from $index + str-length($needle) through str-length($string)
+      @if str-slice($string, $i, $i + str-length($needle) - 1) == $needle
+        $result: $i
+
+  @return $result
+
+// <https://github.com/HugoGiraudel/SassyStrings/blob/master/stylesheets/public/_str-last-index.scss>
+@function str-last-index($string, $needle)
+  @if type-of($string) != "string"
+    @error "`str-last-index` function expecting a string for $string; #{type-of($string)} given."
+
+  @if type-of($needle) != "string"
+    @error "`str-last-index` function expecting a string for $needle; #{type-of($needle)} given."
+
+  @return _ss-str-last-index($string, $needle)
+// [String Functions] ::end
+
+// [Image RWD] ::start
+@function imgRwd($path, $options: ())
+  $lastSlashIndex: str-last-index($path, '/')
+  $optionsNormalized: ()
+  $optionsStr: ''
+
+  @each $option, $value in $options
+    @if $option == 'w' or $option == 'width'
+      @if type-of($value) != "number"
+        @error "`width` option is expecting a number."
+
+      $optionsNormalized: append($optionsNormalized, 'w' + $value)
+
+    @if $option == 'h' or $option == 'height'
+      @if type-of($value) != "number"
+        @error "`height` option is expecting a number."
+
+      $optionsNormalized: append($optionsNormalized, 'h' + $value)
+
+    @if $option == 'quality' or $option == 'q'
+      @if type-of($value) != "number"
+        @error "`quality` option is expecting a number."
+
+      $optionsNormalized: append($optionsNormalized, 'q' + $value)
+
+    @if $option == 'x'
+      @if type-of($value) != "number"
+        @error "`x` option is expecting a number."
+
+      $optionsNormalized: append($optionsNormalized, 'x' + $value)
+
+    @if $option == 'y'
+      @if type-of($value) != "number"
+        @error "`y` option is expecting a number."
+
+      $optionsNormalized: append($optionsNormalized, 'y' + $value)
+
+    @if $option == 'date'
+      @if type-of($value) != "string"
+        @error "`date` option is expecting a string."
+
+      $optionsNormalized: append($optionsNormalized, $value)
+
+    @if ($option == 'crop' or $options == 'c') and $value == true
+      $optionsNormalized: append($optionsNormalized, 'c')
+
+    @if $option == 'fw' or $option == 'final_width'
+      @if type-of($value) != "number"
+        @error "`final_width` option is expecting a number."
+
+      $optionsNormalized: append($optionsNormalized, 'fw' + $value)
+
+    @if $option == 'fh' or $option == 'final_height'
+      @if type-of($value) != "number"
+        @error "`final_height` option is expecting a number."
+
+      $optionsNormalized: append($optionsNormalized, 'fh' + $value)
+
+    @if $option == 'fx'
+      @if type-of($value) != "number"
+        @error "`fx` option is expecting a number."
+
+      $optionsNormalized: append($optionsNormalized, 'fx' + $value)
+
+    @if $option == 'fy'
+      @if type-of($value) != "number"
+        @error "`fy` option is expecting a number."
+
+      $optionsNormalized: append($optionsNormalized, 'fy' + $value)
+
+    @if ($option == 'fc' or $option == 'final_crop') and $value == true
+      $optionsNormalized: append($optionsNormalized, 'fc')
+
+  @if length($optionsNormalized) > 0
+    @for $i from 1 through length($optionsNormalized)
+      $cur: nth($optionsNormalized, $i)
+
+      @if $optionsStr == ''
+        $optionsStr: $cur
+      @else
+        $optionsStr: $optionsStr + '-' + $cur
+
+    @return str-insert($path, '/' + $optionsStr, $lastSlashIndex)
+
+  @return $path
+
+@function backgroundImgRwd($path, $options: ())
+  @return url("#{ imgRwd($path, $options) }")
+// [Image RWD] ::end
+
+
+

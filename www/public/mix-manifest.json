@@ -1,4 +1,10 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/build/js/app.js": "/build/js/app.js?id=bb30c89bd12a57ab7a60",
+    "/build/js/lazysizes.js": "/build/js/lazysizes.js?id=a5851de301d071371e56",
+    "/build/js/manifest.js": "/build/js/manifest.js?id=f8672334185af4b8ceb1",
+    "/build/js/styleguide.js": "/build/js/styleguide.js?id=8ec1bad7a010b726e462",
+    "/build/js/vendor.js": "/build/js/vendor.js?id=70a4ce1395054a1dc530",
+    "/build/css/vendor.css": "/build/css/vendor.css?id=d0c9f37d9c515b7a11d0",
+    "/build/css/app.css": "/build/css/app.css?id=e3869b5be5b89d43eb23",
+    "/build/css/styleguide.css": "/build/css/styleguide.css?id=50657675b16bc2794ef1"
 }

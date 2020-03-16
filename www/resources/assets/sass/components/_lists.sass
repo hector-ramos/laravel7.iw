@@ -1,0 +1,77 @@
+// ==================================================
+// [_lists.sass]
+// ==================================================
+
+// ---------------------------------------------
+// [Variables] ::start
+// ---------------------------------------------
+
+// [Bullet] ::start
+$list_bullet_type: disc
+
+$list_bullet_color: $primary
+
+$list_bullet_text_color: $body-color
+%list_bullet_text_hover
+  text-decoration: underline
+// [Bullet] ::end
+
+// ---------------------------------------------
+// [Variables] ::end
+// ---------------------------------------------
+
+
+.list
+  .list__item
+    margin-bottom: 15px
+
+  // [Second Level List] ::start
+  .list
+    margin-top: 10px
+  // [Second Level List] ::end
+
+
+// ---------------------------------------------
+// [Bullet] ::start
+// ---------------------------------------------
+
+.list--bullet
+  list-style: $list_bullet_type
+  padding-left: 20px
+  color: $list_bullet_color
+
+  .list__item__link
+    color: $list_bullet_text_color
+
+    &:hover,
+    &:focus
+      @extend %list_bullet_text_hover
+
+  .list__item__text
+    color: $list_bullet_text_color
+
+// ---------------------------------------------
+// [Bullet] ::end
+// ---------------------------------------------
+
+
+// ---------------------------------------------
+// [.list--with-icons] ::start
+// ---------------------------------------------
+
+.list--with-icons
+  .list__item
+    display: flex
+
+  .list__item__icon
+    margin-right: 10px
+    color: $primary
+    @extend .mdi-18
+
+    &:before
+      position: relative
+      top: 2px
+
+// ---------------------------------------------
+// [.list--with-icons] ::end
+// ---------------------------------------------
